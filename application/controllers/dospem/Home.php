@@ -40,8 +40,8 @@ class Home extends CI_Controller
 			'nama' => $this->session->userdata('nama')
 		];
 
-		$this->load->view('mahasiswa/layout/main', $title);
-		$this->load->view('mahasiswa/home');
-		$this->load->view('mahasiswa/layout/footer');
+		$this->load->view('dospem/layout/main', $title);
+		$this->load->view('dospem/home');
+		$this->load->view('dospem/layout/footer');
 	}
 }

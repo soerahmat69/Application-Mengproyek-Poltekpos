@@ -53,7 +53,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class=" nav-item active">
-                <a class="nav-link" href=" <?= base_url(); ?>/mahasiswa/home">
+                <a class="nav-link" href=" <?= base_url(); ?>/admin/home">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -68,13 +68,13 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url() ?>/mahasiswa/team">
+                <a class="nav-link" href="<?= base_url() ?>/admin/team">
                     <i class="fas fa-box"></i>
-                    <span>Team</span></a>
+                    <span>Manage User</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url(); ?>/mahasiswa/daftar">
+                <a class="nav-link" href="<?= base_url(); ?>/admin/daftar">
                     <i class="fas fa-truck-loading"></i>
                     <span>Manage Proyek</span></a>
             </li>

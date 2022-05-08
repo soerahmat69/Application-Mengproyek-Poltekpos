@@ -40,10 +40,8 @@ class Home extends CI_Controller
 			'nama' => $this->session->userdata('nim')
 		];
 
-		$this->load->view('layout/main', $title);
+		$this->load->view('admin/layout/main', $title);
 		$this->load->view('admin/home');
-		$this->load->view('layout/footer');
+		$this->load->view('admin/layout/footer');
 	}
-
-	
 }

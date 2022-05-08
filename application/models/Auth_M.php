@@ -26,4 +26,11 @@ class Auth_M extends CI_Model
 	{
 		return $this->db->get_where($table, $where);
 	}
+
+	function user($nim)
+	{
+		$this->db->where('nim', $nim);
+		$this->db->from('user');
+		return $this->db->get();
+	}
 }

@@ -39,6 +39,7 @@ class Auth extends CI_Controller
 	{
 		$nim = $this->input->post('nim');
 		$password = $this->input->post('password');
+
 		$where = array(
 			'nim' => $nim,
 			'pass' => $password
@@ -50,30 +51,24 @@ class Auth extends CI_Controller
 
 
 
-
-
-			$this->db->select('level, nama');
-			$this->db->where('nim', $nim);
-			$this->db->from('user');
-			$query = $this->db->get();
-
-			if ($query->num_rows() > 0)  //Ensure that there is at least one result 
+			if ($this->Auth_M->user($nim)->num_rows() > 0)  //Ensure that there is at least one result 
 			{
-				foreach ($query->result_array() as $row) //Iterate through results
+				foreach ($this->Auth_M->user($nim)->result_array() as $row) //Iterate through results
 				{
 					echo $row['level'];
 					$data_session = array(
-						'nim' => $row['nama'],
-						'status' => "login"
+						'nama' => $row['nama'],
+						'status' => "login",
+						'nim' => $nim
 					);
 					$this->session->set_userdata($data_session);
 
 					if ($row['level'] == 1) {
 						redirect(base_url("mahasiswa/home"));
-					} elseif ($query == 2) {
+					} elseif ($row['level'] == 2) {
 						redirect(base_url("dospem/home"));
-					} elseif ($query == 3) {
-						redirect(base_url("dosenkoor/home"));
+					} elseif ($row['level'] == 3) {
+						redirect(base_url("koor/home"));
 					} elseif ($row['level'] == 4) {
 						redirect(base_url("admin/home"));
 					}

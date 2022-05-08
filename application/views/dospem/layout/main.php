@@ -53,7 +53,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class=" nav-item active">
-                <a class="nav-link" href=" <?= base_url(); ?>/mahasiswa/home">
+                <a class="nav-link" href=" <?= base_url(); ?>dospem/home">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -62,43 +62,23 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Data Master
-            </div>
-
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url() ?>/mahasiswa/team">
+                <a class="nav-link" href="<?= base_url() ?>dospem/proyek">
                     <i class="fas fa-box"></i>
-                    <span>Team</span></a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url(); ?>/mahasiswa/daftar">
-                    <i class="fas fa-truck-loading"></i>
                     <span>Manage Proyek</span></a>
             </li>
 
+            <li class="nav-item active">
+                <a class="nav-link" href="<?= base_url(); ?>dospem/daftar">
+                    <i class="fas fa-truck-loading"></i>
+                    <span>Berita Proyek</span></a>
+            </li>
+
             <!-- Divider -->
-            <hr class="sidebar-divider">
+
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Inventory
-            </div>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="/barangmasuk">
-                    <i class="fas fa-arrow-alt-to-right"></i>
-                    <span>Barang Masuk</span></a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="/barangkeluar">
-                    <i class="fas fa-arrow-alt-to-left"></i>
-                    <span>Barang Keluar</span></a>
-            </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

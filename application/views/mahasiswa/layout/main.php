@@ -62,9 +62,7 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Data Master
-            </div>
+
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
@@ -72,31 +70,17 @@
                     <i class="fas fa-box"></i>
                     <span>Team</span></a>
             </li>
-
+            <hr class="sidebar-divider">
             <li class="nav-item active">
                 <a class="nav-link" href="<?= base_url(); ?>/mahasiswa/daftar">
                     <i class="fas fa-truck-loading"></i>
                     <span>Manage Proyek</span></a>
             </li>
-
-            <!-- Divider -->
             <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Inventory
-            </div>
-
             <li class="nav-item active">
-                <a class="nav-link" href="/barangmasuk">
-                    <i class="fas fa-arrow-alt-to-right"></i>
-                    <span>Barang Masuk</span></a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="/barangkeluar">
-                    <i class="fas fa-arrow-alt-to-left"></i>
-                    <span>Barang Keluar</span></a>
+                <a class="nav-link" href="<?= base_url(); ?>/mahasiswa/sidang">
+                    <i class="fas fa-truck-loading"></i>
+                    <span>Sidang Proyek</span></a>
             </li>
 
             <!-- Divider -->

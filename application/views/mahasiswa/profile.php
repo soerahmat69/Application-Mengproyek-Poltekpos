@@ -3,33 +3,33 @@
         <h1 class="d-flex justify-content-center font-weight-bold">Profil Data User</h1>
     </div>
 
-    <?php foreach ($user as $u) : ?>
-        <form action="/user/edit" method="post">
+    <!-- <?php foreach ($user as $u) : ?> -->
+    <form action="/user/edit" method="post">
 
-            <div class="form-group">
-                <label for="nama" class="font-weight-bold">Nama</label>
-                <input type="text" class="form-control" name="nama" id="nama" aria-describedby="nama" value="<?= $u['nama']; ?>" required>
+        <div class="form-group">
+            <label for="nama" class="font-weight-bold">Nama</label>
+            <input type="text" class="form-control" name="nama" id="nama" aria-describedby="nama" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="no_tel" class="font-weight-bold">No telepon</label>
+            <input type="number" class="form-control" name="no_tel" id="password" aria-describedby="no_tel" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="alamat" class="font-weight-bold">Alamat</label>
+            <textarea class="form-control" name="alamat" id="alamat" rows="3" required></textarea>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <button type="submit" class="btn btn-primary px-4">Ubah data</button>
             </div>
-            <div class="form-group">
-                <label for="no_tel" class="font-weight-bold">No telepon</label>
-                <input type="number" class="form-control" name="no_tel" id="password" aria-describedby="no_tel" value="<?= $u['no_tel']; ?>" required>
+            <div class="col-3">
+                <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#ganti_password">
+                    Ganti Password
+                </button>
             </div>
-            <div class="form-group">
-                <label for="alamat" class="font-weight-bold">Alamat</label>
-                <textarea class="form-control" name="alamat" id="alamat" rows="3" required><?= $u['alamat']; ?></textarea>
-            </div>
-            <div class="row">
-                <div class="col-2">
-                    <button type="submit" class="btn btn-primary px-4">Ubah data</button>
-                </div>
-                <div class="col-3">
-                    <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#ganti_password">
-                        Ganti Password
-                    </button>
-                </div>
-            </div>
-        </form>
-    <?php endforeach; ?>
+        </div>
+    </form>
+    <!-- <?php endforeach; ?> -->
 
     <!-- Modal -->
     <div class="modal fade" id="ganti_password" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -43,7 +43,7 @@
                 </div>
                 <form action="/user/password" method="post">
                     <div class="modal-body">
-                        <?= csrf_field(); ?>
+
                         <div class="form-group mb-1">
                             <label for="password_lama" class="font-weight-bold">Password Lama</label>
                             <input type="password" class="form-control" name="password_lama" id="password_lama" aria-describedby="password_lama" required>

@@ -1,25 +1,25 @@
-<?= $this->extend('layout/main'); ?>
-
-
-<?= $this->section('content'); ?>
-
 <div class="container p-3">
 
     <div class="col m-4">
-        <h1 class="d-flex justify-content-center font-weight-bold">Data Barang</h1>
+        <h1 class="d-flex justify-content-center font-weight-bold">Daftar Proyek</h1>
     </div>
 
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#input_barang">
-        Tambah Barang
+        Daftar Proyek
     </button>
+
+    <button type="button" class="float-right btn btn-primary mb-4" data-toggle="modal" data-target="#input_barang">
+        Aktivitas Proyek
+    </button>
+
 
     <!-- Modal -->
     <div class="modal fade" id="input_barang" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Tambah Barang</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Daftar Proyek</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -27,25 +27,41 @@
                 <form action="<?= base_url('mahasiswa/daftar/simpan'); ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
 
+
                         <div class="form-group">
-                            <label for="nama_mhs" class="font-weight-bold">Judul Proyek</label>
-                            <input autocomplete="off" type="text" class="form-control" name="nama_mhs" id="nama_mhs" aria-describedby="nama_mhs" required>
+                            <label class="font-weight-bold">Judul Proyek</label>
+                            <input autocomplete="off" type="text" class="form-control" name="judul_proyek" id="judul_proyek" aria-describedby="judul_proyek" required>
+                            <input autocomplete="off" type="hidden" class="form-control" name="nim_mhs" id="nim_mhs" value="<?= $nim ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="stok" class="font-weight-bold">Latar Belakang</label>
-                            <input autocomplete="off" type="text" class="form-control" name="nim_mhs" id="nim_mhs" aria-describedby="nim_mhs" min="0" max="99999" required>
+                            <label class="font-weight-bold">Proyek</label>
+                            <select class="  form-control" id="proyek" name="proyek" required>
+                                <option class="" value="">--pilih--</option>
+                                <option class="" value="1">1</option>
+                                <option class="" value="2">2</option>
+                                <option class="" value="3">3</option>
+
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="harga" class="font-weight-bold">Nomor Whatssapp</label>
-                            <input autocomplete="off" type="number" class="form-control" name="harga" id="harga" aria-describedby="harga" min="0" required>
+                            <label class="font-weight-bold">Dosen Pembimbing</label>
+                            <select class="  form-control" id="dospem" name="dospem" required>
+                                <option class="">--pilih--</option>
+                                <?php foreach ($dospen as $dos) : ?>
+
+                                    <option> <?= $dos['nama']; ?> </option>
+
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="deskripsi" class="font-weight-bold">Email Barang</label>
-                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3" required></textarea>
+                            <label class="font-weight-bold">Abstraksi Proyek</label>
+                            <textarea class="form-control" name="abstraksi" id="abstraksi" rows="3" required></textarea>
+
                         </div>
                         <div class="form-group">
-                            <label for="harga" class="font-weight-bold">Foto Barang</label>
-                            <input type="file" class="form-control" name="foto_barang" id="foto_barang" aria-describedby="harga" min="0" required>
+                            <label class="font-weight-bold">Proposal Proyek</label>
+                            <input type="text" class="form-control" name="proposal" id="proposal" aria-describedby="proposal" min="0" required>
 
                         </div>
 
@@ -59,112 +75,58 @@
         </div>
     </div>
 
-    <table id="table_barang" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Id Barang</th>
-                <th>Nama Barang</th>
-                <th>Stok</th>
-                <th>Harga</th>
-                <th>Deskripsi</th>
-                <th>Foto Barang</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $no = 1;
-            // foreach ($barang as $b) : 
-            ?>
+    <hr style="height: 10px;">
+    <div class="container ">
+        <div class="row">
+            <div class="col justify-content-center d-inline-flex ">
+                <?php if (isset($proyek)) : foreach ($proyek as $pro) : ?>
+                        <div class="mx-3 card" style="width: 18rem;">
 
-            <tr>
-                <td class="align-middle" width="20px"><?= $no++ ?></td>
-                <td class="align-middle"></td>
-                <td class="align-middle"></td>
-                <td class="align-middle"></td>
-                <td class="align-middle"></td>
-                <td class="align-middle"></td>
-                <td class="align-middle"><img src=""></td>
-                <td width="140px">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_barang<?= $b['id_barang']; ?>">
-                        Edit
-                    </button>
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class=" card-body">
+                                <h5 style="font-size: 25px;" class=" font-weight-bold"><?= $pro['judul']; ?></h5>
+                                <?php if (isset($pro['accept'])) {
+                                    $cek = "Diterima";
+                                    $set = "badge badge-pill badge-success";
+                                } else {
+                                    $cek = "Belum Diterima";
+                                    $set = "badge badge-pill badge-danger";
+                                } ?>
+                                <p style="font-size: 15px;" class="font-weight-bold"> Status Proyek: <span style="font-size: 13px;" class="<?= $set ?>"><?= $cek; ?></span></p>
+                                <p class=" font-weight-normal "> proyek <?= $pro['proyek'] ?></p>
+                                <p class=" font-weight-light ">Abstraksi : <?= (str_word_count($pro['abstraksi']) > 13 ? substr($pro['abstraksi'], 0, 100) . "...." : $pro['abstraksi']) ?></p>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="edit_barang<?= $b['id_barang']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Barang</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form action="/barang/edit" method="post">
-                                    <div class="modal-body">
-                                        <input autocomplete="off" type="hidden" class="form-control" id="edit_id_barang" aria-describedby="edit_id_barang" value="<?= $b['id_barang']; ?>" name="edit_id_barang">
-                                        <div class="form-group">
-                                            <label for="edit_nama_barang" class="font-weight-bold">Nama Barang</label>
-                                            <input autocomplete="off" type="text" class="form-control" id="edit_nama_barang" aria-describedby="edit_nama_barang" value="<?= $b['nama_barang']; ?>" name="edit_nama_barang">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="edit_stok" class="font-weight-bold">Stok Barang</label>
-                                            <input autocomplete="off" type="number" class="form-control" id="edit_stok" aria-describedby="edit_stok" value="<?= $b['stok']; ?>" name="edit_stok">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="edit_harga" class="font-weight-bold">Harga Barang</label>
-                                            <input autocomplete="off" type="number" class="form-control" id="edit_harga" aria-describedby="edit_harga" value="<?= $b['harga']; ?>" name="edit_harga">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="edit_deskripsi" class="font-weight-bold">Deskripsi Barang</label>
-                                            <textarea class="form-control" id="edit_deskripsi" rows="3" name="edit_deskripsi"><?= $b['deskripsi']; ?></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="harga" class="font-weight-bold">Foto Barang</label>
-                                            <input type="file" class="form-control" name="foto_edit" id="foto_edit" aria-describedby="">
-                                            <input type="hidden" class="form-control" name="foto_recent" id="foto_recent" aria-describedby="" value="<?= $b['foto_barang']; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
-                                    </div>
-                                </form>
+                                <a href=" #" class="btn btn-primary">Detail</a>
+                                <a href="<?= base_url() ?>mahasiswa/daftar/bimbingan?id_proyek=<?= $pro['id_proyek']; ?>" class="float-right btn btn-info">Bimbingan</a>
+                            </div>
+                        </div>
+
+                <?php endforeach;
+                endif; ?>
+
+                <div class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Modal body text goes here.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapus_barang<?= $b['id_barang']; ?>">
-                        Hapus
-                    </button>
-                    <div class="modal fade" id="hapus_barang<?= $b['id_barang']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Menghapus Data !</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form action="/barang/hapus" method="post">
-                                    <div class="modal-body">
-                                        Anda yakin menghapus data ?
-                                        <input type="hidden" class="form-control" id="hapus_id_barang" aria-describedby="hapus_id_barang" value="<?= $b['id_barang']; ?>" name="hapus_id_barang">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-primary">Hapus</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                </div>
 
-        </tbody>
 
-    </table>
+            </div>
+        </div>
+    </div>
+
 </div>
-
-<?= $this->endSection(); ?>

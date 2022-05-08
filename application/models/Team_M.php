@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller
+class Team_M extends CI_Model
 {
 
 	/**
@@ -21,27 +21,10 @@ class Home extends CI_Controller
 	 */
 
 
-
-	public function __construct()
+	function RecentTeam($nim)
 	{
-		parent::__construct();
-		$this->load->helper("url");
 
-		if ($this->session->userdata('status') != "login") {
-			redirect(base_url("auth"));
-		}
-	}
-
-
-	public function index()
-	{
-		$title = [
-			'judul' => 'Dashboard',
-			'nama' => $this->session->userdata('nama')
-		];
-
-		$this->load->view('mahasiswa/layout/main', $title);
-		$this->load->view('mahasiswa/home');
-		$this->load->view('mahasiswa/layout/footer');
+		$this->db->where(' accept is not null and (nim_mhs in(' . $nim . ') or partnert in(' . $nim . '))');
+		return $this->db->get('team')->result_array();
 	}
 }

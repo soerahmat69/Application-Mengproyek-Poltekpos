@@ -53,7 +53,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class=" nav-item active">
-                <a class="nav-link" href=" <?= base_url(); ?>/mahasiswa/home">
+                <a class="nav-link" href=" <?= base_url(); ?>koor/home">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -61,42 +61,30 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Data Master
-            </div>
-
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url() ?>/mahasiswa/team">
+                <a class="nav-link" href="<?= base_url() ?>koor/proyek">
                     <i class="fas fa-box"></i>
-                    <span>Team</span></a>
+                    <span>Proyek</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url(); ?>/mahasiswa/daftar">
+                <a class="nav-link" href="<?= base_url() ?>koor/proyek/pembimbing">
+                    <i class="fas fa-box"></i>
+                    <span>Manage Pembimbing</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="<?= base_url() ?>koor/bimbingan">
+                    <i class="fas fa-box"></i>
+                    <span>Manage Bimbingan</span></a>
+            </li>
+
+
+            <li class="nav-item active">
+                <a class="nav-link" href="<?= base_url(); ?>koor/sidang">
                     <i class="fas fa-truck-loading"></i>
-                    <span>Manage Proyek</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Inventory
-            </div>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="/barangmasuk">
-                    <i class="fas fa-arrow-alt-to-right"></i>
-                    <span>Barang Masuk</span></a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="/barangkeluar">
-                    <i class="fas fa-arrow-alt-to-left"></i>
-                    <span>Barang Keluar</span></a>
+                    <span>Manage Sidang</span></a>
             </li>
 
             <!-- Divider -->
