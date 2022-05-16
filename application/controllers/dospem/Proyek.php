@@ -127,14 +127,13 @@ class Proyek extends CI_Controller
 
         $data = [
 
-
             'nilai_nim' => $this->input->post('nilai_nim'),
             'nilai_partnert' => $this->input->post('nilai_partnert'),
             'pesan' => $this->input->post('pesan')
         ];
 
         $this->db->set($data);
-        $this->db->where('id_proyek', $this->input->post('id_proyek'),);
+        $this->db->where('id_bimbingan', $this->input->post('id_bimbingan'),);
         $this->db->update('bimbingan');
 
 

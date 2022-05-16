@@ -42,6 +42,11 @@ class Proyek_K extends CI_Model
 		$this->db->join('user', 'proyek.nim_dospem = user.nim');
 		return	$this->db->get()->result_array();
 	}
+
+	function lol()
+	{
+		return $this->db->get('proyek')->result;
+	}
 	function dospem()
 	{
 		$this->db->where('accept_proyek is not null');

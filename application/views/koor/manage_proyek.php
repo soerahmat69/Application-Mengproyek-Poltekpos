@@ -21,7 +21,7 @@
                 <form action="<?= base_url('koor/proyek/proposaldate'); ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input autocomplete="off" type="text" class="form-control" id="nim" value="<?= $nim ?>" name="nim">
+                            <input autocomplete="off" type="hidden" class="form-control" id="nim" value="<?= $nim ?>" name="nim">
 
                             <label for="" class="font-weight-bold">Isikan Tanggal Mulai Pengajuan :</label>
                             <input autocomplete="off" type="date" class="form-control" id="mulai" value="" name="mulai">
@@ -60,7 +60,7 @@
 
                 <tr>
                     <td class="align-middle text-center"><?= $a['nama_mhs'] ?></td>
-                    <td class="align-middle text-center"><?= $a['judul'] ?></td>
+                    <td class="align-middle text-center"><?= $a['file_proposal'] ?></td>
                     <td class="align-middle text-center"><?= $a['nama'] ?></td>
                     <td class="align-middle text-center">Proyek <?= $a['proyek'] ?></td>
                     <td class="align-middle text-center"><?php
@@ -76,7 +76,7 @@
 
                     <td width="140px">
 
-                        <a href="<?= base_url(); ?>koor/proyek/detail?id_proyek=<?= $a['id_proyek']; ?>" class="btn btn-primary">
+                        <a href="<?= base_url(); ?>koor/proyek/detail?id_proyek=<?= $a['id_proyek']; ?>&detail=" class="btn btn-primary">
                             Lanjut...
                         </a>
 

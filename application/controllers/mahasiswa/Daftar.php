@@ -27,6 +27,7 @@ class Daftar extends CI_Controller
         parent::__construct();
         $this->load->helper("url");
         $this->load->model('Daftar_M');
+        $this->load->library('upload', 'config');
     }
 
 
@@ -52,7 +53,7 @@ class Daftar extends CI_Controller
 
     function simpan()
     {
-
+        $this->load->library('upload', 'config');
         $dos = $this->Daftar_M->PilihDospen($this->input->post('dospem'));
         $dospem = $dos[0]->nim;
 
@@ -61,6 +62,18 @@ class Daftar extends CI_Controller
         $this->db->where('accept = 1 and nim_mhs = ' . $nims . '');
         $this->db->from('team');
         $curi = $this->db->get()->result();
+
+
+        $config['upload_path']          = './uploads/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 100;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('proposal');
+
+
 
 
         if (isset($curi[0]->id_team)) {
@@ -72,7 +85,8 @@ class Daftar extends CI_Controller
                 'proyek' => $this->input->post('proyek'),
                 'judul' => $this->input->post('judul_proyek'),
                 'abstraksi' => $this->input->post('abstraksi'),
-                'file_proposal' => $this->input->post('proposal')
+                'file_proposal' => file_get_contents($_FILES['proposal']['tmp_name'])
+
 
             ];
 
@@ -111,10 +125,18 @@ class Daftar extends CI_Controller
     {
 
 
+        $config['upload_path'] = './';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size']  = '100';
+        $config['max_width'] = '1024';
+        $config['max_height'] = '768';
+
+        $get_image = $this->input->post(file_get_contents($_FILES['file_proposal']['file_bimbingan']));  //imgProfile is the name of the image tag  
+
         $data = [
             'kegiatan' => $this->input->post('kegiatan'),
             'id_proyek' => $this->input->post('id_proyek'),
-            'file_bimbingan' => $this->input->post('file_laporan')
+            'file_bimbingan' => $get_image
         ];
 
         $this->db->insert('bimbingan', $data);

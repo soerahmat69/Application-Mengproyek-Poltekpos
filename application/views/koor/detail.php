@@ -3,17 +3,19 @@
         <hr class="my-2">
         <div class="row border ">
             <div class=" mt-3 col-md-6">
-                <p class="">Memberitai</p>
+                <a href="">
+                    <p class=" pr-3 text-right">Memberitai</p>
+                </a>
                 <hr class="my-3">
-                <p>Manage Proposal</p>
+                <a href="<?= base_url() ?>koor/proyek/detail?id_proyek=<?= $id_proyek ?>&detail=team">
+                    <p class=" pr-3 text-right">Team Proyek</p>
+                </a>
                 <hr class="my-3">
-                <p>Manage Bimbingan</p>
-                <hr class="my-3">
-                <p>Manage Proyek</p>
+                <a href="<?= base_url() ?>koor/proyek/detail?id_proyek=<?= $id_proyek ?>&detail=bimbingan">
+                    <p class="pr-3 text-right">Bimbingan</p>
+                </a>
+                <hr class="my-3"><a href="<?= base_url() ?>koor/proyek/detail?id_proyek=<?= $id_proyek ?>&detail=sidang">
+                    <p class=" pr-3 text-right">Dosen</p>
+                </a>
                 <hr class="my-3">
             </div>
-            <div class="mt-3 col-md-6">
-                <p>lawak bang</p>
-            </div>
-        </div>
-    </div>

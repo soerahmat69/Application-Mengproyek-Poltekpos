@@ -61,7 +61,7 @@
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold">Proposal Proyek</label>
-                            <input type="text" class="form-control" name="proposal" id="proposal" aria-describedby="proposal" min="0" required>
+                            <input type="file" class="form-control" name="proposal" id="proposal" aria-describedby="proposal" min="0" required>
 
                         </div>
 
@@ -85,7 +85,7 @@
                             <img src="..." class="card-img-top" alt="...">
                             <div class=" card-body">
                                 <h5 style="font-size: 25px;" class=" font-weight-bold"><?= $pro['judul']; ?></h5>
-                                <?php if (isset($pro['accept'])) {
+                                <?php if (isset($pro['accept_proyek'])) {
                                     $cek = "Diterima";
                                     $set = "badge badge-pill badge-success";
                                 } else {

@@ -74,15 +74,9 @@
                     <span>Manage Pembimbing</span></a>
             </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url() ?>koor/bimbingan">
-                    <i class="fas fa-box"></i>
-                    <span>Manage Bimbingan</span></a>
-            </li>
-
 
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url(); ?>koor/sidang">
+                <a class="nav-link" href="<?= base_url(); ?>koor/proyek/sidang">
                     <i class="fas fa-truck-loading"></i>
                     <span>Manage Sidang</span></a>
             </li>

@@ -118,13 +118,12 @@
                     <td class="d-flex" width="140px">
 
 
-                        <button class="mx-1 btn btn-primary" data-toggle="modal" data-target="#tanggapi<?= $a['id_proyek'] ?>">Tanggapi</button>
+                        <button class="mx-1 btn btn-primary" data-toggle="modal" data-target="#tanggapi<?= $a['id_bimbingan'] ?>">Tanggapi</button>
 
-                        <button class=" mx-1 btn btn-primary" data-toggle="modal" data-target="#edit">Edit</button>
 
                     </td>
 
-                    <div class="modal fade" id="tanggapi<?= $a['id_proyek'] ?>">" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id="tanggapi<?= $a['id_bimbingan'] ?>">" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -138,7 +137,7 @@
                                         <div class="form-group">
                                             <label for="">Masukan Nilai Mhs</label>
                                             <input autocomplete="off" type="numb" class="form-control" id="nilai_nim" value="" name="nilai_nim">
-                                            <input autocomplete="off" type="hidden" class="form-control" id="id_proyek" value="<?= $a['id_proyek'] ?>" name="id_proyek">
+                                            <input autocomplete="off" type="text" class="form-control" id="id_bimbingan" value="<?= $a['id_bimbingan'] ?>" name="id_bimbingan">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Masukan Nilai Mhs</label>
