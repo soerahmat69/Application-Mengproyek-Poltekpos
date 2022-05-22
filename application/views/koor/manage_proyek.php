@@ -55,12 +55,10 @@
             <?php
             $no = 1;
             foreach ($proyek as $a) :
-
             ?>
-
                 <tr>
                     <td class="align-middle text-center"><?= $a['nama_mhs'] ?></td>
-                    <td class="align-middle text-center"><?= $a['file_proposal'] ?></td>
+                    <td class="align-middle text-center"><?= $a['nama_partnert'] ?></td>
                     <td class="align-middle text-center"><?= $a['nama'] ?></td>
                     <td class="align-middle text-center">Proyek <?= $a['proyek'] ?></td>
                     <td class="align-middle text-center"><?php
@@ -79,15 +77,10 @@
                         <a href="<?= base_url(); ?>koor/proyek/detail?id_proyek=<?= $a['id_proyek']; ?>&detail=" class="btn btn-primary">
                             Lanjut...
                         </a>
-
-
-
-
                     </td>
                     <!-- Modal -->
                 </tr>
             <?php endforeach; ?>
         </tbody>
-
     </table>
 </div>

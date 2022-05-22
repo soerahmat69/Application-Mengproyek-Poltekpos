@@ -62,46 +62,25 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Data Master
-            </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url() ?>/admin/team">
+                <a class="nav-link" href="<?= base_url() ?>admin/ManageUser">
                     <i class="fas fa-box"></i>
-                    <span>Manage User</span></a>
+                    <span>Manage Mahasiswa</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url(); ?>/admin/daftar">
+                <a class="nav-link" href="<?= base_url(); ?>admin/ManageProdi">
                     <i class="fas fa-truck-loading"></i>
-                    <span>Manage Proyek</span></a>
+                    <span>Manage Prodi</span></a>
             </li>
-
-            <!-- Divider -->
+            <li class="nav-item active">
+                <a class="nav-link" href="<?= base_url(); ?>admin/ManageKegiatan">
+                    <i class="fas fa-truck-loading"></i>
+                    <span>Manage Kegiatan</span></a>
+            </li>
             <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Inventory
-            </div>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="/barangmasuk">
-                    <i class="fas fa-arrow-alt-to-right"></i>
-                    <span>Barang Masuk</span></a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="/barangkeluar">
-                    <i class="fas fa-arrow-alt-to-left"></i>
-                    <span>Barang Keluar</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>

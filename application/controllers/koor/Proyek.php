@@ -179,9 +179,7 @@ class Proyek extends CI_Controller
         }
     }
 
-    function detail_sidang()
-    {
-    }
+
 
     function proposaldate()
     {

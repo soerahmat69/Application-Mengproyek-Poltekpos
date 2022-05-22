@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class ManageUser extends CI_Controller
+class ManageKegiatan extends CI_Controller
 {
 
     /**
@@ -32,21 +32,30 @@ class ManageUser extends CI_Controller
 
     public function index()
     {
-        $this->db->where('level in (1)');
-        $user = $this->db->get('user')->result_array();
+
+        $this->db->join('user', 'proyek.nim_dospem = user.nim');
+        $proyek = $this->db->get('proyek')->result_array();
+
+        foreach ($proyek as $lol) {
+
+            $this->db->where('nim in(' . $lol['nim_dospeng'] . ')');
+            $dospeng = $this->db->get('user')->result_array();
+        }
+
+
 
 
         $title = [
             'judul' => 'Manage User',
             'nama' => $this->session->userdata('nama'),
             'nim' => $this->session->userdata('nim'),
-            'user' => $user
+            'proyek' => $proyek,
+            'dospeng' => $dospeng
 
         ];
 
-
         $this->load->view('admin/layout/main', $title);
-        $this->load->view('admin/userMhs');
+        $this->load->view('admin/kegiatan');
         $this->load->view('admin/layout/footer');
     }
 

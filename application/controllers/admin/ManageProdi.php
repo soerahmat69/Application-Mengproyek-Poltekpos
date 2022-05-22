@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class ManageUser extends CI_Controller
+class ManageProdi extends CI_Controller
 {
 
     /**
@@ -32,21 +32,20 @@ class ManageUser extends CI_Controller
 
     public function index()
     {
-        $this->db->where('level in (1)');
-        $user = $this->db->get('user')->result_array();
+
+        $nim = $this->session->userdata('nim');
+
 
 
         $title = [
             'judul' => 'Manage User',
             'nama' => $this->session->userdata('nama'),
-            'nim' => $this->session->userdata('nim'),
-            'user' => $user
+            'nim' => $this->session->userdata('nim')
 
         ];
 
-
         $this->load->view('admin/layout/main', $title);
-        $this->load->view('admin/userMhs');
+        $this->load->view('admin/prodi');
         $this->load->view('admin/layout/footer');
     }
 

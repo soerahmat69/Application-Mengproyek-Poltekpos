@@ -37,7 +37,7 @@ class Home extends CI_Controller
 	{
 		$title = [
 			'judul' => 'Home',
-			'nama' => $this->session->userdata('nim')
+			'nama' => $this->session->userdata('nama')
 		];
 
 		$this->load->view('admin/layout/main', $title);

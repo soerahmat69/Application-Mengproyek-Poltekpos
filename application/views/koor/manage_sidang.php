@@ -84,12 +84,14 @@
                     <td width="140px">
 
                         <button data-target="#pilih<?= $a['id_proyek'] ?>" data-toggle="modal" class="btn btn-primary">
-                            Pilih
+                            Dospeng
                         </button>
+
 
                         <button data-target="#jadwal<?= $a['id_proyek'] ?>" data-toggle="modal" class="btn btn-primary">
                             Jadwal
                         </button>
+
 
                     </td>
                     <!-- Modal -->
