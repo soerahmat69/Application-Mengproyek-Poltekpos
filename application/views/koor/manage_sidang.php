@@ -112,7 +112,7 @@
 
                                             <label for="">Pilih Dosen Penguji</label>
                                             <select class="  form-control" id="dospeng" name="dospeng" required>
-                                                <option class="" value="111">--pilih--</option>
+                                                <option class="" value="">--pilih--</option>
                                                 <?php foreach ($user as $us => $uss) : ?>
                                                     <option class="" value=" <?= $uss['nim'] ?>"> <?= $uss['nama'] ?></option>
 
@@ -148,7 +148,7 @@
                                         <div class="form-group">
                                             <input autocomplete="off" type="hidden" class="form-control" id="id" value="<?= $a['id_proyek'] ?>" name="id">
                                             <label for="">Mulai Ajukan Sidang</label>
-                                            <input autocomplete="off" type="date" class="form-control" id="jadwal" value="" name="jadwal">
+                                            <input autocomplete="off" type="date" class="form-control" id="jadwal" value="<?= $a['jadwal'] ?>" name="jadwal">
 
                                         </div>
                                     </div>

@@ -135,7 +135,9 @@
                             </div>
                         </li>
 
-
+                        <li class="nav-item my-auto">
+                            <?= $zewels ?>
+                        </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 

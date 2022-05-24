@@ -46,7 +46,21 @@ class Team extends CI_Controller
         $this->db->from('team');
         $team = $this->db->get()->result_array();
 
+        $this->db->where('level = 4');
+        $this->db->join('user', 'berita_acara.nim_user = user.nim');
+        $nanggal = $this->db->get('berita_acara')->result_array();
 
+        foreach ($nanggal as $lol) {
+
+            $start = date('d/m/Y');
+            $end = date('d/m/Y', strtotime($lol['akhir_proposal']));
+
+            if ($end > $start) {
+                $zewels = 'proposal: <span class=" badge badge-pill badge-success">Sedang Berlangsung</span>';
+            } else {
+                $zewels = 'proposal: <span class="badge badge-pill badge-danger">Tidak Berlangsung</span>';
+            }
+        }
 
 
         $title = [
@@ -55,8 +69,8 @@ class Team extends CI_Controller
             'nim' => $this->session->userdata('nim'),
             'user' => $user,
             'team' => $team,
-            'recent' => $this->Team_M->RecentTeam($nim)
-
+            'recent' => $this->Team_M->RecentTeam($nim),
+            'zewels' => $zewels
         ];
 
         $this->load->view('mahasiswa/layout/main', $title);

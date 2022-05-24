@@ -50,45 +50,38 @@ class ManageUser extends CI_Controller
         $this->load->view('admin/layout/footer');
     }
 
-    function rekrut()
+    function tambah_mhs()
     {
-
-        $nim = $this->input->post('partnert');
-        $nama = $this->input->post('nama');
-        $nimm = $this->input->post('nim');
-
-
         $data = [
-            'nim_mhs' => $nimm,
-            'nama_mhs' => $nama,
-            'partnert' => $nim,
-
-
+            'nim' => $this->input->post('nim'),
+            'pass' => $this->input->post('pass'),
+            'level' => "1",
+            'nama' => $this->input->post('nama')
         ];
 
-        $this->db->insert('team', $data);
+        $this->db->insert('user', $data);
 
-        return redirect(base_url('mahasiswa/team'));
+        return redirect(base_url('admin/ManageUser'));
     }
 
-    function terima()
+    function edit_mhs()
     {
-        $acc = $this->input->post('check');
-        $nim = $this->input->post('nim_acc');
-        $id_team = $this->input->post('id_team');
 
-        if (isset($acc)) {
-            $data = [
-                'id_team' => $id_team,
-                'nim_mhs' => $nim,
-                'partnert' => $this->input->post('partnert'),
-                'nama_mhs' => $this->input->post('nama_acc'),
-                'accept' => $acc
-            ];
-            $this->db->replace('team', $data);
-            return redirect(base_url('mahasiswa/team'));
-        } else {
-            echo "salah";
-        }
+        $data = [
+            'nim' => $this->input->post('nim'),
+            'nama' => $this->input->post('nama'),
+            'pass' => $this->input->post('pass')
+        ];
+        $this->db->set($data);
+        $this->db->where('nim = ' . $this->input->post('nim'));
+        $this->db->update('user', $data);
+        return redirect(base_url('admin/ManageUser'));
+    }
+
+    function hapus_mhs()
+    {
+        $this->db->where('nim', $this->input->post('nim'));
+        $this->db->delete('user');
+        return redirect(base_url('admin/ManageUser'));
     }
 }

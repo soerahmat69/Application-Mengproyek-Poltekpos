@@ -26,9 +26,53 @@
         Tambah Kegiatan
     </button>
 
+    <button type="button" class="btn btn-primary mx-3 mb-4" data-toggle="modal" data-target="#koor">
+        Tambah Dosen Koor
+    </button>
 
 
-    <!-- Modal -->
+    <div class="modal fade" id="koor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Tambah Kegiatan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+
+                <form action="<?= base_url('admin/ManageKoor/tambah_koor'); ?>" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nim Dosen</label>
+                            <input autocomplete="off" type="text" class="form-control" id="nim" value="" name="nim">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nama Dosen</label>
+                            <input autocomplete="off" type="text" class="form-control" id="nim" value="" name="nama">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nama Pssword</label>
+                            <input autocomplete="off" type="text" class="form-control" id="nim" value="" name="pass">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Terima</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="modal fade" id="mhs" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -40,7 +84,7 @@
                 </div>
 
 
-                <form action="<?= base_url('admin/ManageKoor/tambah'); ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('admin/ManageKoor/tambah_kegiatan'); ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
 
                         <div class="form-group">
@@ -48,8 +92,15 @@
                             <input autocomplete="off" type="text" class="form-control" id="nim" value="" name="nim">
                         </div>
                         <div class="form-group">
-                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nama Dosen Koor</label>
-                            <input placeholder="Opsional " autocomplete="off" type="number" class="form-control" id="nim" value="" name="nama">
+                            <label class="font-weight-bold">Masukan Nama Dosen Koor</label>
+                            <select class="  form-control" id="dospem" name="koor" required>
+                                <option class="">--pilih--</option>
+                                <?php foreach ($user as $dos) : ?>
+
+                                    <option value="<?= $dos['nim'] ?>"><?= $dos['nama'] ?></option>
+
+                                <?php endforeach; ?>
+                            </select>
                         </div>
 
 
@@ -141,7 +192,7 @@
                 </button>
             </div>
 
-            <form action="<?= base_url('admin/ManageKoor/edit') ?>" method="post">
+            <form action="<?= base_url('admin/ManageKoor/edit_kegiatan') ?>" method="post">
                 <div class="modal-body">
 
                     <div class="form-group">
@@ -150,9 +201,15 @@
                         <input autocomplete="off" type="text" class="form-control" id="nim" value="<?= $a['nama_kegiatan']; ?>" name="nim">
                     </div>
                     <div class="form-group">
-                        <label class="font-weight-bold">Masukan Nama Dosen Koor</label>
-                        <input autocomplete="off" type="text" class="form-control" id="nama" value="<?= $a['dosen_koor']; ?>" name="nama">
+                        <label class="font-weight-bold">Pilih Nama Koor Dosen</label>
+                        <select class="  form-control" id="dospem" name="koor" required>
+                            <option class="">--pilih--</option>
+                            <?php foreach ($user as $dos) : ?>
 
+                                <option value="<?= $dos['nim'] ?>"><?= $dos['nama'] ?></option>
+
+                            <?php endforeach; ?>
+                        </select>
                     </div>
 
                     <div class="modal-footer">

@@ -32,6 +32,10 @@ class ManageKoor extends CI_Controller
 
     public function index()
     {
+        $this->db->where('level in (3)');
+        $user = $this->db->get('user')->result_array();
+
+        $this->db->join('user', 'kegiatan.dosen_koor = user.nim', 'left');
         $kegiatan = $this->db->get('kegiatan')->result_array();
 
 
@@ -39,7 +43,8 @@ class ManageKoor extends CI_Controller
             'judul' => 'Manage User',
             'nama' => $this->session->userdata('nama'),
             'nim' => $this->session->userdata('nim'),
-            'kegiatan' => $kegiatan
+            'kegiatan' => $kegiatan,
+            'user' => $user
 
         ];
 
@@ -49,45 +54,45 @@ class ManageKoor extends CI_Controller
         $this->load->view('admin/layout/footer');
     }
 
-    function rekrut()
+    function tambah_koor()
     {
-
-        $nim = $this->input->post('partnert');
-        $nama = $this->input->post('nama');
-        $nimm = $this->input->post('nim');
-
-
         $data = [
-            'nim_mhs' => $nimm,
-            'nama_mhs' => $nama,
-            'partnert' => $nim,
-
-
+            'nim' => $this->input->post('nim'),
+            'pass' => $this->input->post('pass'),
+            'level' => "3",
+            'nama' => $this->input->post('nama')
         ];
 
-        $this->db->insert('team', $data);
-
-        return redirect(base_url('mahasiswa/team'));
+        $this->db->insert('user', $data);
+        return redirect(base_url('admin/ManageKoor'));
     }
 
-    function terima()
+    function tambah_kegiatan()
     {
-        $acc = $this->input->post('check');
-        $nim = $this->input->post('nim_acc');
-        $id_team = $this->input->post('id_team');
+        $data = [
+            'nama_kegiatan' => $this->input->post('nama')
+        ];
+        $this->db->insert('kegiatan', $data);
+        return redirect(base_url('admin/ManageKoor'));
+    }
 
-        if (isset($acc)) {
-            $data = [
-                'id_team' => $id_team,
-                'nim_mhs' => $nim,
-                'partnert' => $this->input->post('partnert'),
-                'nama_mhs' => $this->input->post('nama_acc'),
-                'accept' => $acc
-            ];
-            $this->db->replace('team', $data);
-            return redirect(base_url('mahasiswa/team'));
-        } else {
-            echo "salah";
-        }
+    function edit_mhs()
+    {
+        $data = [
+            'nim' => $this->input->post('nim'),
+            'nama' => $this->input->post('nama'),
+            'pass' => $this->input->post('pass')
+        ];
+        $this->db->set($data);
+        $this->db->where('nim = ' . $this->input->post('nim'));
+        $this->db->update('user', $data);
+        return redirect(base_url('admin/ManageUser'));
+    }
+
+    function hapus_mhs()
+    {
+        $this->db->where('nim', $this->input->post('nim'));
+        $this->db->delete('user');
+        return redirect(base_url('admin/ManageUser'));
     }
 }

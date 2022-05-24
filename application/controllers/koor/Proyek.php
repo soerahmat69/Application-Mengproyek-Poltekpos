@@ -84,6 +84,8 @@ class Proyek extends CI_Controller
         $this->db->where('level = 2');
         $user = $this->db->get('user')->result_array();
 
+    
+
         $data = [
             'judul' => 'Daftar Proyek',
             'nama' => $this->session->userdata('nama'),

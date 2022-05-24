@@ -28,6 +28,15 @@ class Daftar extends CI_Controller
         $this->load->helper("url");
         $this->load->model('Daftar_M');
         $this->load->library('upload', 'config');
+
+
+        $config = array(
+            'upload_path' => './',
+            'allowed_types' => 'pdf',
+            'max_size' => 2048
+        );
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
     }
 
 
@@ -35,13 +44,31 @@ class Daftar extends CI_Controller
     {
 
         $nim = $this->session->userdata('nim');
+        $anyone = $this->db->get('kegiatan')->result_array();
 
+        $this->db->where('level = 4');
+        $this->db->join('user', 'berita_acara.nim_user = user.nim');
+        $nanggal = $this->db->get('berita_acara')->result_array();
+
+        foreach ($nanggal as $lol) {
+
+            $start = date('d/m/Y');
+            $end = date('d/m/Y', strtotime($lol['akhir_proposal']));
+
+            if ($end > $start) {
+                $zewels = 'proposal: <span class=" badge badge-pill badge-success">Sedang Berlangsung</span>';
+            } else {
+                $zewels = 'proposal: <span class="badge badge-pill badge-danger">Tidak Berlangsung</span>';
+            }
+        }
         $data = [
             'judul' => 'Daftar Proyek',
             'nama' => $this->session->userdata('nama'),
             'nim' => $this->session->userdata('nim'),
             'dospen' => $this->Daftar_M->DataDospen(),
-            'proyek' => $this->Daftar_M->ProyekSemua($nim)
+            'proyek' => $this->Daftar_M->ProyekSemua($nim),
+            'anyone' => $anyone,
+            'zewels' => $zewels
 
 
         ];
@@ -53,7 +80,6 @@ class Daftar extends CI_Controller
 
     function simpan()
     {
-        $this->load->library('upload', 'config');
         $dos = $this->Daftar_M->PilihDospen($this->input->post('dospem'));
         $dospem = $dos[0]->nim;
 
@@ -63,21 +89,12 @@ class Daftar extends CI_Controller
         $this->db->from('team');
         $curi = $this->db->get()->result();
 
-
-        $config['upload_path']          = './uploads/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 100;
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
-
-        $this->load->library('upload', $config);
-        $this->upload->do_upload('proposal');
-
-
-
-
-        if (isset($curi[0]->id_team)) {
-
+        //mod
+        if (!$this->upload->do_upload('proposal')) {
+            redirect(base_url('mahasiswa/daftar'));
+        } else {
+            $file_raw = file_get_contents($this->upload->data('full_path'));
+            //mod
             $data = [
 
                 'nim_dospem' => $dospem,
@@ -85,16 +102,14 @@ class Daftar extends CI_Controller
                 'proyek' => $this->input->post('proyek'),
                 'judul' => $this->input->post('judul_proyek'),
                 'abstraksi' => $this->input->post('abstraksi'),
-                'file_proposal' => file_get_contents($_FILES['proposal']['tmp_name'])
+                'file_proposal' => $file_raw
 
 
             ];
 
+            unlink($file_raw);
             $this->db->insert('proyek', $data);
-
-            return redirect(base_url('mahasiswa/daftar'));
-        } else {
-            echo "wahhh kentangnya ketinggalanmnn";
+            redirect(base_url('/mahasiswa/daftar'));
         }
     }
 
@@ -107,12 +122,29 @@ class Daftar extends CI_Controller
         $this->db->where('id_proyek in (' . $_GET['id_proyek'] . ')');
         $proyek = $this->db->get('bimbingan')->result_array();
 
+        $this->db->where('level = 4');
+        $this->db->join('user', 'berita_acara.nim_user = user.nim');
+        $nanggal = $this->db->get('berita_acara')->result_array();
+
+        foreach ($nanggal as $lol) {
+
+            $start = date('d/m/Y');
+            $end = date('d/m/Y', strtotime($lol['akhir_proposal']));
+
+            if ($end > $start) {
+                $zewels = 'proposal: <span class=" badge badge-pill badge-success">Sedang Berlangsung</span>';
+            } else {
+                $zewels = 'proposal: <span class="badge badge-pill badge-danger">Tidak Berlangsung</span>';
+            }
+        }
+
         $data = [
             'judul' => 'Daftar Proyek',
             'nama' => $this->session->userdata('nama'),
             'nim' => $this->session->userdata('nim'),
             'proyek' => $proyek,
-            'id_proyek' => $id_proyek
+            'id_proyek' => $id_proyek,
+            'zewels' => $zewels
 
         ];
 

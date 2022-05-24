@@ -5,7 +5,7 @@
     </div>
 
 
-
+    <?php  ?>
     <hr style="height: 10px;">
     <div class="container ">
         <div class="row">
@@ -17,13 +17,13 @@
                     <div class=" card-body">
                         <h5 style="font-size: 25px;" class=" font-weight-bold"></h5>
 
-                        <p style="font-size: 15px;" class=" font-weight-bold"> Status Proyek: </p>
-                        <p class=" font-weight-normal "> proyek </p>
-                        <p class=" font-weight-light "></p>
-                        <a href=" #" class="btn btn-primary">Go somewhere</a>
+                        <p style="font-size: 15px;" class=" font-weight-bold">Jadwal: </p>
+                        <p class=" font-weight-normal ">Proyek </p>
+                        <p class=" font-weight-light ">Revisi</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-
+                <?php ?>
 
 
                 <div class="modal" tabindex="-1">

@@ -6,7 +6,7 @@
 
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#input_barang">
-        Tambah Kategori
+        Mulai Kegiatan
     </button>
 
     <!-- Modal -->
@@ -25,10 +25,12 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nim</label>
-                            <input autocomplete="off" type="number" class="form-control" id="nim" value="" name="nim">
-                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nim</label>
-                            <input autocomplete="off" type="number" class="form-control" id="nim" value="" name="nama">
+                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Tanggal Mulai</label>
+                            <input autocomplete="off" type="date" class="form-control" id="nim" value="" name="start">
+                        </div>
+                        <div class="form-group">
+                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Tanggal Berakhir Kegiatan</label>
+                            <input autocomplete="off" type="date" class="form-control" id="nim" value="" name="end">
                         </div>
 
 

@@ -50,7 +50,6 @@ class Auth extends CI_Controller
 		if ($cek > 0) {
 
 
-
 			if ($this->Auth_M->user($nim)->num_rows() > 0)  //Ensure that there is at least one result 
 			{
 				foreach ($this->Auth_M->user($nim)->result_array() as $row) //Iterate through results

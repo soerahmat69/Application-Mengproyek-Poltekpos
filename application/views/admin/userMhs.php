@@ -40,14 +40,20 @@
                 </div>
 
 
-                <form action="<?= base_url('admin/ManageUser/tambah'); ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('admin/ManageUser/tambah_mhs'); ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
 
                         <div class="form-group">
                             <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nim</label>
                             <input autocomplete="off" type="number" class="form-control" id="nim" value="" name="nim">
-                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nim</label>
-                            <input autocomplete="off" type="number" class="form-control" id="nim" value="" name="nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nama</label>
+                            <input autocomplete="off" type="text" class="form-control" id="nim" value="" name="nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Password</label>
+                            <input autocomplete="off" type="text" class="form-control" id="nim" value="" name="pass">
                         </div>
 
 
@@ -76,15 +82,11 @@
             <?php
             $no = 1;
             foreach ($user as $a) :
-
             ?>
-
                 <tr>
                     <td><?= $a['nim']; ?></td>
                     <td><?= $a['nama']; ?></td>
                     <td><?= $a['pass']; ?></td>
-
-
                     <td width="140px">
 
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit<?= $a['nim']; ?>">
@@ -105,7 +107,7 @@
                                     </button>
                                 </div>
 
-                                <form action="<?= base_url('admin/ManageUser/hapus') ?>" method="post">
+                                <form action="<?= base_url('admin/ManageUser/hapus_mhs') ?>" method="post">
                                     <div class="modal-body">
 
                                         <div class="form-group">
@@ -135,18 +137,20 @@
                 </button>
             </div>
 
-            <form action="<?= base_url('admin/ManageUser/edit') ?>" method="post">
+            <form action="<?= base_url('admin/ManageUser/edit_mhs') ?>" method="post">
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label class="font-weight-bold">Masukan Nim</label>
-                        <input autocomplete="off" type="hidden" class="form-control" id="partnert" value="<?= $a['nim']; ?>" name="partnert">
-                        <input autocomplete="off" type="number" class="form-control" id="nim" value="<?= $a['nim']; ?>" name="nim">
+                        <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nim</label>
+                        <input autocomplete="off" type="number" class="form-control" id="nim" value="<?= $a['nim'] ?>" name="nim">
                     </div>
                     <div class="form-group">
-                        <label class="font-weight-bold">Masukan Nama</label>
-                        <input autocomplete="off" type="text" class="form-control" id="nama" value="<?= $a['nama']; ?>" name="nama">
-
+                        <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Nama</label>
+                        <input autocomplete="off" type="text" class="form-control" id="nim" value="<?= $a['nama'] ?>" name="nama">
+                    </div>
+                    <div class="form-group">
+                        <label for="acc py-2 text-size-1" class="font-weight-bold">Masukan Password</label>
+                        <input autocomplete="off" type="text" class="form-control" id="nim" value="<?= $a['pass'] ?>" name="pass">
                     </div>
 
                     <div class="modal-footer">
